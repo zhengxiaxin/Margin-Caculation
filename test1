@@ -1,0 +1,22 @@
+import pandas as pd
+import numpy as np
+
+TD: object = pd.read_csv('D:/Users/lenovo/Desktop/fo_prior_day_balances_by_account.csv')
+YTD:object = pd.read_csv('D:/Users/lenovo/Desktop/fo_prior_day_balances_by_account_y.csv')
+
+TD_PCI = np.array(TD)
+TD_PCIC = TD_PCI[67,11] - TD_PCI[67,13] + TD_PCI[68,11] - TD_PCI[68,13] + TD_PCI[72,11] - TD_PCI[72,13]
+
+YTD_PCI = np.array(YTD)
+YTD_PCIC = YTD_PCI[67,11] - YTD_PCI[67,13] + YTD_PCI[68,11] - YTD_PCI[68,13] + YTD_PCI[72,11] - YTD_PCI[72,13]
+
+PCIC = (TD_PCIC - YTD_PCIC)
+
+print("PCIC为: ${PCIC:,.2f}".format(PCIC=PCIC))
+
+TD_PCIA = TD_PCI[59,11] - TD_PCI[59,13] + TD_PCI[60,11] - TD_PCI[60,13]
+YTD_PCIA = YTD_PCI[59,11] - YTD_PCI[59,13] + YTD_PCI[60,11] - YTD_PCI[60,13]
+
+PCIA = (TD_PCIA - YTD_PCIA)
+
+print("PCIA为: ${PCIA:,.2f}".format(PCIA=PCIA))
